@@ -1,0 +1,11 @@
+.App {
+  font-family: 'Montserrat', 'Roboto', sans-serif;
+  text-align: center;
+
+  display: grid;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
