@@ -1,5 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { HashRouter, Route } from 'react-router-dom'
+import Spinner from './Pages/Spinner'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckSquare, faPlayCircle, faSpinner, faCoffee } from '@fortawesome/free-solid-svg-icons'
 // far icons have still 'solid' name, for distinction they have to be imported this way
@@ -25,12 +28,12 @@ function n() {
 }
 
 const menuItems = [
-  { title: 'Home' },
-  { title: 'Font Awesome 5' },
-  { title: 'Menu Bar' },
-  { title: 'futute placeholder' },
-  { title: 'futute placeholder 2' },
-  { title: 'futute placeholder 3' },
+  { title: 'Home', link: '#', },
+  { title: 'Font Awesome 5', link: '#', },
+  { title: 'Menu Bar', link: '#', },
+  { title: 'Spinners', link: '/spinners', },
+  { title: 'future place 2', link: '#', },
+  { title: 'future place 3', link: '#', },
 ]
 
 function App() {
@@ -38,10 +41,10 @@ function App() {
   return (
     <div className="App">
       <Nav menuItems={menuItems} />
+      <Route path='/spinners' component={Spinner} />
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
-      <Footer />
-      <div>
+      <div className={css`display: none;`}>
         FA: {n()}
         {n()}
         <i className="fas fa-circle fa-2x" />
@@ -97,9 +100,12 @@ function App() {
           </span>
         </span>
       </div>
+      {/* 
+      // @todo why class not working here
+      <Footer className={css`display:none;`}/> */}
     </div>
   )
 }
 
 const rootElement = document.getElementById('root')
-ReactDOM.render(<App />, rootElement)
+ReactDOM.render(<HashRouter><App /></HashRouter>, rootElement)

@@ -8,4 +8,18 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.menulayer {
+  position: absolute;
+  top: 50px;
+  left: 20%;
+  background-color: rgba(107, 107, 107, 0.6);
+  width: 100vw;
+  height: calc(100% - 50px);
+  
+  body {
+    overflow: hidden;
+  }
 }
