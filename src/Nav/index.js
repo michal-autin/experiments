@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import styled, { cx } from 'react-emotion'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -155,7 +156,8 @@ class Nav extends React.Component {
             </li>
             {this.props.menuItems.map(item => (
               <li className="menuitem" key={item.title}>
-                <a href={item.link}>{item.title}</a>
+                <Link to={item.link}>{item.title}</Link>
+                {/* <a href={item.link}>{item.title}</a> */}
               </li>
             ))}
           </ul>

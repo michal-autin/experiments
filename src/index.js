@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { HashRouter, Route } from 'react-router-dom'
 import Spinner from './Pages/Spinner'
+import Slider from './Pages/Slider'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckSquare, faPlayCircle, faSpinner, faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -28,23 +30,21 @@ function n() {
 }
 
 const menuItems = [
-  { title: 'Home', link: '#', },
-  { title: 'Font Awesome 5', link: '#', },
-  { title: 'Menu Bar', link: '#', },
-  { title: 'Spinners', link: '/spinners', },
-  { title: 'future place 2', link: '#', },
-  { title: 'future place 3', link: '#', },
+  { title: 'Home', link: '/', exact: true },
+  { title: 'Font Awesome 5', link: '/fontawesome' },
+  { title: 'Menu Bar', link: '/menubar' },
+  { title: 'Spinners', link: '/spinners' },
+  { title: 'Slider', link: '/slider' },
+  { title: 'future place 3', link: '/fp3' },
 ]
 
-function App() {
+const Home = () => {
   const fasize = '2x'
   return (
-    <div className="App">
-      <Nav menuItems={menuItems} />
-      <Route path='/spinners' component={Spinner} />
+    <div>
       <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <div className={css`display: none;`}>
+      <h2>Start editing to see some magic happen! Ole!</h2>
+      <div>
         FA: {n()}
         {n()}
         <i className="fas fa-circle fa-2x" />
@@ -81,18 +81,16 @@ function App() {
         {n()}
         <FontAwesomeIcon icon={faSpinner} transform="shrink-2 left-3" />
         {/* }
-        // @todo discover why css is not working
-        // @todo discover why it is not working at all
-        { */}
+          // @todo discover why css is not working
+          // @todo discover why it is not working at all
+          { */}
         {n()}
         <span
-          className={cx(
-            'fa-layers',
-            'fa-fw',
-            css`
-              background: MistyRose;
-            `
-          )}
+          className={cx({
+            'fa-layers': true,
+            'fa-fw': true,
+            // css`background: MistyRose;`
+          })}
         >
           <FontAwesomeIcon icon={farPlayCircle} size={fasize} border />
           <span className="fa-layers-counter" transform="expand-4 right-4">
@@ -101,11 +99,29 @@ function App() {
         </span>
       </div>
       {/* 
-      // @todo why class not working here
-      <Footer className={css`display:none;`}/> */}
+        // @todo why class not working here
+        <Footer className={css`display:none;`}/> */}
     </div>
   )
 }
 
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Nav menuItems={menuItems} />
+        <Route path="/slider" component={Slider} />
+        <Route path="/spinners" component={Spinner} />
+        <Route path="/" exact component={Home} />
+      </div>
+    </BrowserRouter>
+  )
+}
+
 const rootElement = document.getElementById('root')
-ReactDOM.render(<HashRouter><App /></HashRouter>, rootElement)
+ReactDOM.render(
+  <HashRouter>
+    <App />
+  </HashRouter>,
+  rootElement
+)
