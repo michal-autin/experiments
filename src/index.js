@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { HashRouter, Route } from 'react-router-dom'
 import Spinner from './Pages/Spinner'
 import Slider from './Pages/Slider'
+import Antd from './Pages/Antd'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckSquare, faPlayCircle, faSpinner, faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -35,7 +36,7 @@ const menuItems = [
   { title: 'Menu Bar', link: '/menubar' },
   { title: 'Spinners', link: '/spinners' },
   { title: 'Slider', link: '/slider' },
-  { title: 'future place 3', link: '/fp3' },
+  { title: 'Antd', link: '/antd' },
 ]
 
 const Home = () => {
@@ -112,6 +113,7 @@ function App() {
         <Nav menuItems={menuItems} />
         <Route path="/slider" component={Slider} />
         <Route path="/spinners" component={Spinner} />
+        <Route path="/antd" component={Antd} />
         <Route path="/" exact component={Home} />
       </div>
     </BrowserRouter>

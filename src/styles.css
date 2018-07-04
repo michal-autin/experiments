@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+.ant-input {
+  color: red;
+}
+
 .menulayer {
   position: absolute;
   top: 50px;
